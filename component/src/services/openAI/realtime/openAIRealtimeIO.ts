@@ -39,6 +39,7 @@ import {
 import {
   DOCS_BASE_URL,
   MICROPHONE,
+  STRINGIFY,
   DEEP_COPY,
   AUDIO,
   ERROR,
@@ -200,7 +201,7 @@ export class OpenAIRealtimeIO extends DirectServiceIO {
     // https://platform.openai.com/docs/api-reference/realtime-sessions/create
     const result = await fetch(`${OPEN_AI_BASE_URL}realtime/sessions`, {
       method: POST,
-      body: JSON.stringify(this.rawBody),
+      body: STRINGIFY(this.rawBody),
       headers: {
         [CONTENT_TYPE_H_KEY]: APPLICATION_JSON,
         [AUTHORIZATION_H]: `${BEARER_PREFIX}${key}`,
@@ -214,7 +215,7 @@ export class OpenAIRealtimeIO extends DirectServiceIO {
     return {
       updateConfig: (config: OpenAIRealtimeConfig) => {
         // https://platform.openai.com/docs/api-reference/realtime-client-events/session
-        this._dc?.send(JSON.stringify({[TYPE]: 'session.update', session: config}));
+        this._dc?.send(STRINGIFY({[TYPE]: 'session.update', session: config}));
       },
       sendMessage: (text: string, role?: 'user' | 'assistant' | 'system') => {
         // https://platform.openai.com/docs/api-reference/realtime-client-events/conversation/item/create
@@ -620,17 +621,17 @@ export class OpenAIRealtimeIO extends DirectServiceIO {
     if (typeof result !== 'object' || !ObjectUtils.isJson(result)) {
       throw Error('The `function_handler` response must be a JSON object, e.g. {response: "My response"}');
     }
-    const item = {[TYPE]: FUNCTION_CALL_OUTPUT, call_id, output: JSON.stringify(result)};
+    const item = {[TYPE]: FUNCTION_CALL_OUTPUT, call_id, output: STRINGIFY(result)};
     this.sendMessage(item);
   }
 
   // https://platform.openai.com/docs/api-reference/realtime-client-events/conversation/item/create
   sendMessage(item: object) {
     if (!this._dc) return;
-    const message = JSON.stringify({[TYPE]: 'conversation.item.create', item});
+    const message = STRINGIFY({[TYPE]: 'conversation.item.create', item});
     this._dc.send(message);
     const responseCreatePayload = {[TYPE]: 'response.create'};
-    this._dc.send(JSON.stringify(responseCreatePayload));
+    this._dc.send(STRINGIFY(responseCreatePayload));
   }
 
   override isCustomView() {

@@ -1,4 +1,3 @@
-import {AUDIO, CAMERA, FILES, GIFS, IMAGE, IMAGES, MIXED_FILES, TEXT} from '../../utils/consts/messageConstants';
 import {CameraFilesServiceConfig, MicrophoneFilesServiceConfig} from '../../types/fileServiceConfigs';
 import {REQUEST_SETTINGS_ERROR} from '../../utils/errorMessages/errorMessages';
 import {APPLICATION_JSON, CONTENT_TYPE_H_KEY} from './serviceConstants';
@@ -27,6 +26,17 @@ import {
   StreamHandlers,
   ServiceIO,
 } from '../serviceIO';
+import {
+  MIXED_FILES,
+  STRINGIFY,
+  CAMERA,
+  IMAGES,
+  AUDIO,
+  FILES,
+  IMAGE,
+  GIFS,
+  TEXT,
+} from '../../utils/consts/messageConstants';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export class BaseServiceIO implements ServiceIO {
@@ -73,12 +83,12 @@ export class BaseServiceIO implements ServiceIO {
     Object.keys(body).forEach((key) => formData.append(key, String(body[key])));
     let textMessageIndex = 0;
     messages.slice(0, messages.length - 1).forEach((message) => {
-      formData.append(`message${(textMessageIndex += 1)}`, JSON.stringify(message));
+      formData.append(`message${(textMessageIndex += 1)}`, STRINGIFY(message));
     });
     const lastMessage = messages[messages.length - 1];
     if (lastMessage[TEXT]) {
       delete lastMessage[FILES]; // no need to have files prop as we are sending the message
-      formData.append(`message${(textMessageIndex += 1)}`, JSON.stringify(lastMessage));
+      formData.append(`message${(textMessageIndex += 1)}`, STRINGIFY(lastMessage));
     }
     return formData;
   }

@@ -1,3 +1,5 @@
+import {STRINGIFY} from '../consts/messageConstants';
+
 export class ObjectUtils {
   public static setPropertyValueIfDoesNotExist<T>(object: T, nestedKeys: string[], value: unknown) {
     const propertyKey = nestedKeys[0] as keyof T;
@@ -40,7 +42,7 @@ export class ObjectUtils {
 
   public static isJson(obj: object) {
     try {
-      JSON.stringify(obj);
+      STRINGIFY(obj);
       return true;
     } catch (_) {
       return false;

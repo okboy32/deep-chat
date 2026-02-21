@@ -65,4 +65,7 @@ export const ONE = '1';
 export const ROLE = 'role';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const DEEP_COPY = (object: any) => JSON.parse(JSON.stringify(object));
+export const STRINGIFY = (object: any) => JSON.stringify(object);
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const DEEP_COPY = (object: any) => JSON.parse(STRINGIFY(object));

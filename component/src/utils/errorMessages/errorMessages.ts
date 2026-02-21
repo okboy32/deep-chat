@@ -1,15 +1,15 @@
-import {DOCS_BASE_URL} from '../consts/messageConstants';
+import {DOCS_BASE_URL, STRINGIFY} from '../consts/messageConstants';
 
 function capitalizeFirstLetter(text: string) {
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
 function getInterceptorMessage(postInterceptor?: object) {
-  return postInterceptor ? JSON.stringify(postInterceptor) : postInterceptor;
+  return postInterceptor ? STRINGIFY(postInterceptor) : postInterceptor;
 }
 
 function getInterceptorMesages(result: object, messageType: string, isInterceptor: boolean, postInterceptor?: object) {
-  const responseMessage = `\n${capitalizeFirstLetter(messageType)} message: ${JSON.stringify(result)} \n`;
+  const responseMessage = `\n${capitalizeFirstLetter(messageType)} message: ${STRINGIFY(result)} \n`;
   const interceptorMessage = isInterceptor
     ? `${capitalizeFirstLetter(messageType)} message after interceptor: ${getInterceptorMessage(postInterceptor)} \n`
     : '';

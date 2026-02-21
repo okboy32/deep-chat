@@ -1,4 +1,4 @@
-import {AI, ERROR, HTML, ROLE, SERVICE, TEXT} from '../consts/messageConstants';
+import {AI, ERROR, HTML, ROLE, SERVICE, STRINGIFY, TEXT} from '../consts/messageConstants';
 import {MessageStream} from '../../views/chat/messages/stream/messageStream';
 import {CustomHandler, IWebsocketHandler} from './customHandler';
 import {INVALID_RESPONSE} from '../errorMessages/errorMessages';
@@ -103,12 +103,12 @@ export class Websocket {
     const {body: interceptedBody, error} = await RequestUtils.processRequestInterceptor(io.deepChat, requestDetails);
     if (error) return messages.addNewErrorMessage(SERVICE, error);
     if (!Websocket.isWebSocket(ws)) return ws.newUserMessage.listener(interceptedBody);
-    const processedBody = stringifyBody ? JSON.stringify(interceptedBody) : interceptedBody;
+    const processedBody = stringifyBody ? STRINGIFY(interceptedBody) : interceptedBody;
     if (ws.readyState === undefined || ws.readyState !== ws.OPEN) {
       console[ERROR]('Connection is not open');
       if (!messages.isLastMessageError()) messages.addNewErrorMessage(SERVICE, 'Connection error');
     } else {
-      ws.send(JSON.stringify(processedBody));
+      ws.send(STRINGIFY(processedBody));
       io.completionsHandlers.onFinish();
     }
   }

@@ -1,9 +1,9 @@
 import {INVALID_RESPONSE, INVALID_KEY, CONNECTION_FAILED} from '../errorMessages/errorMessages';
 import {OBJECT, POST} from '../../services/utils/serviceConstants';
 import {Messages} from '../../views/chat/messages/messages';
+import {ERROR, STRINGIFY} from '../consts/messageConstants';
 import {RequestDetails} from '../../types/interceptors';
 import {ServiceIO} from '../../services/serviceIO';
-import {ERROR} from '../consts/messageConstants';
 import {CustomHandler} from './customHandler';
 import {RequestUtils} from './requestUtils';
 import {Demo} from '../demo/demo';
@@ -92,7 +92,7 @@ export class HTTPRequest {
     if (error) return RequestUtils.onInterceptorError(messages, error);
     const url = io.connectSettings?.url || io.url || '';
     const method = io.connectSettings?.method || POST;
-    const requestBody = stringifyBody ? JSON.stringify(interceptedBody) : interceptedBody;
+    const requestBody = stringifyBody ? STRINGIFY(interceptedBody) : interceptedBody;
     const requestInit: RequestInit = {method, body: requestBody, headers};
     if (io.connectSettings.credentials) requestInit.credentials = io.connectSettings.credentials; 
     HTTPRequest.executePollRequest(io, url, requestInit, messages);

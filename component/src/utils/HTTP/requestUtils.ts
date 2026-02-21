@@ -1,6 +1,6 @@
 import {REQUEST_SETTINGS_ERROR, INVALID_STREAM_ARRAY_RESPONSE, INVALID_RESPONSE} from '../errorMessages/errorMessages';
 import {APPLICATION_JSON, CONTENT_TYPE_H_KEY, GET, OBJECT, POST} from '../../services/utils/serviceConstants';
-import {ERROR, FILES, HTML, SERVICE, TEXT} from '../consts/messageConstants';
+import {ERROR, FILES, HTML, SERVICE, STRINGIFY, TEXT} from '../consts/messageConstants';
 import {Messages} from '../../views/chat/messages/messages';
 import {Response as ResponseI} from '../../types/response';
 import {RequestDetails} from '../../types/interceptors';
@@ -51,7 +51,7 @@ export class RequestUtils {
       if (Object.keys(err).length === 0) {
         return messages.addNewErrorMessage(SERVICE, defMessage);
       }
-      return messages.addNewErrorMessage(SERVICE, JSON.stringify(err));
+      return messages.addNewErrorMessage(SERVICE, STRINGIFY(err));
     }
     messages.addNewErrorMessage(SERVICE, err);
   }
@@ -59,7 +59,7 @@ export class RequestUtils {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public static fetch(io: ServiceIO, headers: GenericObject<string> | undefined, stringifyBody: boolean, body: any) {
     const requestContent: RequestInit = {method: io.connectSettings?.method || POST, headers};
-    if (requestContent.method !== GET) requestContent.body = stringifyBody ? JSON.stringify(body) : body;
+    if (requestContent.method !== GET) requestContent.body = stringifyBody ? STRINGIFY(body) : body;
     if (io.connectSettings.credentials) requestContent.credentials = io.connectSettings.credentials;
     return fetch(io.connectSettings?.url || io.url || '', requestContent);
   }

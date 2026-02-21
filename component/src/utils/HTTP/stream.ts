@@ -1,7 +1,7 @@
 import {EventSourceMessage, fetchEventSource, FetchEventSourceInit} from '@microsoft/fetch-event-source';
 import {READABLE_STREAM_CONNECTION_ERROR} from '../errorMessages/errorMessages';
+import {ERROR, FILES, HTML, STRINGIFY, TEXT} from '../consts/messageConstants';
 import {MessageStream} from '../../views/chat/messages/stream/messageStream';
-import {ERROR, FILES, HTML, TEXT} from '../consts/messageConstants';
 import {ServiceIO, StreamHandlers} from '../../services/serviceIO';
 import {HTMLUtils} from '../../views/chat/messages/html/htmlUtils';
 import {Messages} from '../../views/chat/messages/messages';
@@ -29,7 +29,7 @@ export class Stream {
       method: io.connectSettings?.method || POST,
       headers: interceptedHeaders,
       credentials: io.connectSettings?.credentials,
-      body: stringifyBody ? JSON.stringify(interceptedBody) : interceptedBody,
+      body: stringifyBody ? STRINGIFY(interceptedBody) : interceptedBody,
     };
     if (typeof io.stream === 'object' && io.stream.readable) {
       Stream.handleReadableStream(io, messages, stream, reqBody, canBeEmpty, interceptedBody);
@@ -93,7 +93,7 @@ export class Stream {
         throw result;
       },
       async onmessage(message: EventSourceMessage) {
-        if (JSON.stringify(message.data) !== JSON.stringify('[DONE]')) {
+        if (STRINGIFY(message.data) !== STRINGIFY('[DONE]')) {
           let eventData: object;
           try {
             eventData = JSON.parse(message.data);

@@ -1,4 +1,4 @@
-import {DEEP_COPY, ERROR, FILES, ROLE, SRC, TEXT, USER} from '../../utils/consts/messageConstants';
+import {DEEP_COPY, ERROR, FILES, ROLE, SRC, STRINGIFY, TEXT, USER} from '../../utils/consts/messageConstants';
 import {GEMINI_BUILD_HEADERS, GEMINI_BUILD_KEY_VERIFICATION_DETAILS} from './utils/geminiUtils';
 import {GeminiContent, GeminiRequestBody} from '../../types/geminiInternal';
 import {GeminiGenerateContentResult} from '../../types/geminiResult';
@@ -129,7 +129,7 @@ export class GeminiIO extends DirectServiceIO {
     }
     const bodyCp = DEEP_COPY(prevBody);
     const functions = functionCalls.map((call) => {
-      return {name: call.name, arguments: JSON.stringify(call.args)};
+      return {name: call.name, arguments: STRINGIFY(call.args)};
     });
     const {responses, processedResponse} = await this.callToolFunction(this.functionHandler, functions);
     if (processedResponse) return processedResponse;

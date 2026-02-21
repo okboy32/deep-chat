@@ -1,8 +1,8 @@
 import {INVALID_KEY, CONNECTION_FAILED} from '../../../utils/errorMessages/errorMessages';
 import {BUILD_KEY_VERIFICATION_DETAILS} from '../../utils/directServiceUtils';
 import {KeyVerificationDetails} from '../../../types/keyVerificationDetails';
+import {ERROR, STRINGIFY} from '../../../utils/consts/messageConstants';
 import {OpenAIConverseResult} from '../../../types/openAIResult';
-import {ERROR} from '../../../utils/consts/messageConstants';
 import {
   CONTENT_TYPE_H_KEY,
   CONTENT_TYPE_L_KEY,
@@ -23,7 +23,7 @@ export const ASSEMBLY_AI_POLL = async (api_token: string, audio_url: string) => 
   // Send a POST request to the transcription API with the audio URL in the request body
   const response = await fetch('https://api.assemblyai.com/v2/transcript', {
     method: POST,
-    body: JSON.stringify({audio_url}),
+    body: STRINGIFY({audio_url}),
     headers,
   });
 

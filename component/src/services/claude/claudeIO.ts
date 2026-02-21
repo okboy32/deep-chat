@@ -1,5 +1,5 @@
 import {DEFINE_FUNCTION_HANDLER, FUNCTION_TOOL_RESPONSE_STRUCTURE_ERROR} from '../../utils/errorMessages/errorMessages';
-import {DEEP_COPY, ERROR, FILE, IMAGE, ROLE, SRC, TEXT, TYPE, USER} from '../../utils/consts/messageConstants';
+import {DEEP_COPY, ERROR, FILE, IMAGE, ROLE, SRC, STRINGIFY, TEXT, TYPE, USER} from '../../utils/consts/messageConstants';
 import {AUTHENTICATION_ERROR_PREFIX, INVALID_REQUEST_ERROR_PREFIX, OBJECT} from '../utils/serviceConstants';
 import {CLAUDE_BUILD_HEADERS, CLAUDE_BUILD_KEY_VERIFICATION_DETAILS} from './utils/claudeUtils';
 import {ClaudeContent, ClaudeMessage, ClaudeRequestBody} from '../../types/claudeInternal';
@@ -110,7 +110,7 @@ export class ClaudeIO extends DirectServiceIO {
     }
     const bodyCp = DEEP_COPY(prevBody);
     const functions = toolUseBlocks.map((block) => {
-      return {name: block.name, arguments: JSON.stringify(block.input)};
+      return {name: block.name, arguments: STRINGIFY(block.input)};
     });
     const {responses, processedResponse} = await this.callToolFunction(this.functionHandler, functions);
     if (processedResponse) return processedResponse;

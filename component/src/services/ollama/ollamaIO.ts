@@ -1,5 +1,4 @@
 import {DEFINE_FUNCTION_HANDLER, FUNCTION_TOOL_RESPONSE_STRUCTURE_ERROR} from '../../utils/errorMessages/errorMessages';
-import {ASSISTANT, DEEP_COPY, ERROR, FILES, IMAGE, IMAGES, ROLE, SRC, TEXT} from '../../utils/consts/messageConstants';
 import {OllamaConverseBodyInternal, OllamaToolCall, OllamaMessage} from '../../types/ollamaInternal';
 import {OLLAMA_BUILD_HEADERS, OLLAMA_BUILD_KEY_VERIFICATION_DETAILS} from './utils/ollamaUtils';
 import {OllamaConverseResult, OllamaStreamResult} from '../../types/ollamaResult';
@@ -12,6 +11,18 @@ import {MessageFile} from '../../types/messageFile';
 import {OBJECT} from '../utils/serviceConstants';
 import {OllamaChat} from '../../types/ollama';
 import {DeepChat} from '../../deepChat';
+import {
+  ASSISTANT,
+  DEEP_COPY,
+  STRINGIFY,
+  IMAGES,
+  ERROR,
+  FILES,
+  IMAGE,
+  ROLE,
+  TEXT,
+  SRC,
+} from '../../utils/consts/messageConstants';
 
 export class OllamaIO extends DirectServiceIO {
   private static readonly THINK_END = '</think>';
@@ -112,7 +123,7 @@ export class OllamaIO extends DirectServiceIO {
     }
     const bodyCp = DEEP_COPY(prevBody);
     const functions = tools.tool_calls.map((call) => {
-      return {name: call.function.name, arguments: JSON.stringify(call.function.arguments)};
+      return {name: call.function.name, arguments: STRINGIFY(call.function.arguments)};
     });
     const {responses, processedResponse} = await this.callToolFunction(this.functionHandler, functions);
     if (processedResponse) return processedResponse;
