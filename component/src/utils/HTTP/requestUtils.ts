@@ -1,6 +1,6 @@
 import {REQUEST_SETTINGS_ERROR, INVALID_STREAM_ARRAY_RESPONSE, INVALID_RESPONSE} from '../errorMessages/errorMessages';
 import {APPLICATION_JSON, CONTENT_TYPE_H_KEY, GET, OBJECT, POST} from '../../services/utils/serviceConstants';
-import {ERROR, FILES, HTML, SERVICE, STRINGIFY, TEXT} from '../consts/messageConstants';
+import {ERROR, FILES, HTML, SERVICE, STRING, STRINGIFY, TEXT} from '../consts/messageConstants';
 import {Messages} from '../../views/chat/messages/messages';
 import {Response as ResponseI} from '../../types/response';
 import {RequestDetails} from '../../types/interceptors';
@@ -45,7 +45,7 @@ export class RequestUtils {
       if (err instanceof Error) {
         return messages.addNewErrorMessage(SERVICE, err.message);
       }
-      if (Array.isArray(err) || typeof (err as {error?: string})[ERROR] === 'string') {
+      if (Array.isArray(err) || typeof (err as {error?: string})[ERROR] === STRING) {
         return messages.addNewErrorMessage(SERVICE, err);
       }
       if (Object.keys(err).length === 0) {
@@ -94,9 +94,9 @@ export class RequestUtils {
       (data) =>
         typeof data !== 'object' ||
         !(
-          typeof data[ERROR] === 'string' ||
-          typeof data[TEXT] === 'string' ||
-          typeof data[HTML] === 'string' ||
+          typeof data[ERROR] === STRING ||
+          typeof data[TEXT] === STRING ||
+          typeof data[HTML] === STRING ||
           Array.isArray(data[FILES])
         )
     );

@@ -1,4 +1,3 @@
-import {ASSISTANT, DEEP_COPY, ERROR, FILES, IMAGES, ROLE, TEXT, TYPE, USER} from '../../../utils/consts/messageConstants';
 import {AssistantFunctionHandler, OpenAI, OpenAIAssistant, OpenAINewAssistant} from '../../../types/openAI';
 import {COMPLETED, GET, INCORRECT_ERROR_PREFIX, POST} from '../../utils/serviceConstants';
 import {FileMessageUtils} from '../../../views/chat/messages/utils/fileMessageUtils';
@@ -32,6 +31,18 @@ import {
   FAILED_TO_FETCH_HISTORY,
   REQUEST_SETTINGS_ERROR,
 } from '../../../utils/errorMessages/errorMessages';
+import {
+  ASSISTANT,
+  DEEP_COPY,
+  IMAGES,
+  STRING,
+  ERROR,
+  FILES,
+  ROLE,
+  TEXT,
+  TYPE,
+  USER,
+} from '../../../utils/consts/messageConstants';
 
 // https://platform.openai.com/docs/api-reference/messages/createMessage
 type MessageContentArr = {
@@ -309,7 +320,7 @@ export class OpenAIAssistantIOI extends DirectServiceIO {
       throw Error(OpenAIAssistantUtils.FUNCTION_TOOL_RESP_ERROR);
     }
     const invidualResponses = await Promise.all(handlerResponse);
-    if (invidualResponses.find((response) => typeof response !== 'string')) {
+    if (invidualResponses.find((response) => typeof response !== STRING)) {
       throw Error(OpenAIAssistantUtils.FUNCTION_TOOL_RESP_ERROR);
     }
     const tool_outputs = invidualResponses.map((resp, index) => {

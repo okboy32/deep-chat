@@ -1,4 +1,5 @@
 import {BrowserStorageItem, BrowserStorageConfig} from '../../../../types/browserStorage';
+import {STRINGIFY} from '../../../../utils/consts/messageConstants';
 import {MessageContentI} from '../../../../types/messagesInternal';
 import {Legacy} from '../../../../utils/legacy/legacy';
 
@@ -27,7 +28,7 @@ export class BrowserStorage {
 
   private set(messages: MessageContentI[], inputText?: string, scrollHeight?: number) {
     const item: BrowserStorageItem = {messages, inputText, scrollHeight};
-    localStorage.setItem(this.storageKey, JSON.stringify(item));
+    localStorage.setItem(this.storageKey, STRINGIFY(item));
   }
 
   public addMessages(messages: MessageContentI[]) {

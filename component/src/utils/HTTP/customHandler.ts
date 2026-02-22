@@ -1,6 +1,6 @@
 import {MessageStream} from '../../views/chat/messages/stream/messageStream';
+import {AI, ERROR, ROLE, SERVICE, STRING} from '../consts/messageConstants';
 import {MessagesBase} from '../../views/chat/messages/messagesBase';
-import {AI, ERROR, ROLE, SERVICE} from '../consts/messageConstants';
 import {INVALID_RESPONSE} from '../errorMessages/errorMessages';
 import {Messages} from '../../views/chat/messages/messages';
 import {RequestDetails} from '../../types/interceptors';
@@ -28,7 +28,7 @@ export class CustomHandler {
         io.completionsHandlers.onFinish();
       } else {
         const messageDataArr = Array.isArray(result) ? result : [result];
-        const errorMessage = messageDataArr.find((message) => typeof message[ERROR] === 'string');
+        const errorMessage = messageDataArr.find((message) => typeof message[ERROR] === STRING);
         if (errorMessage) {
           console[ERROR](errorMessage[ERROR]);
           messages.addNewErrorMessage(SERVICE, errorMessage[ERROR]);
@@ -125,7 +125,7 @@ export class CustomHandler {
         messages.addNewErrorMessage(SERVICE, 'Error in server message');
       } else {
         const messageDataArr = Array.isArray(result) ? result : [result];
-        const errorMessage = messageDataArr.find((message) => typeof message[ERROR] === 'string');
+        const errorMessage = messageDataArr.find((message) => typeof message[ERROR] === STRING);
         if (errorMessage) {
           console[ERROR](errorMessage[ERROR]);
           if (!messages.isLastMessageError()) messages.addNewErrorMessage(SERVICE, errorMessage[ERROR]);

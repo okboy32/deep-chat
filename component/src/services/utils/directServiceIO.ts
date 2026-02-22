@@ -1,4 +1,3 @@
-import {AI, ASSISTANT, DEEP_COPY, FILES, IMAGE, ROLE, SRC, TEXT, TYPE, USER} from '../../utils/consts/messageConstants';
 import {KeyVerificationDetails} from '../../types/keyVerificationDetails';
 import {ChatFunctionHandler, FunctionsDetails} from '../../types/openAI';
 import {KeyVerificationHandlers, ServiceFileTypes} from '../serviceIO';
@@ -22,6 +21,19 @@ import {
   DEFINE_FUNCTION_HANDLER,
   REQUEST_SETTINGS_ERROR,
 } from '../../utils/errorMessages/errorMessages';
+import {
+  ASSISTANT,
+  DEEP_COPY,
+  STRING,
+  FILES,
+  IMAGE,
+  ROLE,
+  TEXT,
+  TYPE,
+  USER,
+  SRC,
+  AI,
+} from '../../utils/consts/messageConstants';
 
 export class DirectServiceIO extends BaseServiceIO {
   key?: string;
@@ -280,7 +292,7 @@ export class DirectServiceIO extends BaseServiceIO {
       if (system.message) bodyCp.messages.unshift({[ROLE]: 'system', content: system.message});
     }
     bodyCp.messages.push({tool_calls: tools.tool_calls, [ROLE]: ASSISTANT, content: null});
-    if (!responses.find(({response}) => typeof response !== 'string') && functions.length === responses.length) {
+    if (!responses.find(({response}) => typeof response !== STRING) && functions.length === responses.length) {
       responses.forEach((resp, index) => {
         const toolCall = tools.tool_calls?.[index];
         bodyCp?.messages.push({

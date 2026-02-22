@@ -1,4 +1,4 @@
-import {AI, ERROR, HTML, ROLE, SERVICE, STRINGIFY, TEXT} from '../consts/messageConstants';
+import {AI, ERROR, HTML, ROLE, SERVICE, STRING, STRINGIFY, TEXT} from '../consts/messageConstants';
 import {MessageStream} from '../../views/chat/messages/stream/messageStream';
 import {CustomHandler, IWebsocketHandler} from './customHandler';
 import {INVALID_RESPONSE} from '../errorMessages/errorMessages';
@@ -78,7 +78,7 @@ export class Websocket {
           Stream.upsertContent(messages, upsertFunc, stream, finalResult);
         } else {
           const messageDataArr = Array.isArray(finalResult) ? finalResult : [finalResult];
-          const errorMessage = messageDataArr.find((message) => typeof message[ERROR] === 'string');
+          const errorMessage = messageDataArr.find((message) => typeof message[ERROR] === STRING);
           if (errorMessage) throw errorMessage[ERROR];
           messageDataArr.forEach((data) => messages.addNewMessage(data));
         }
@@ -130,7 +130,7 @@ export class Websocket {
   public static stream(io: ServiceIO, messages: Messages, roleToStream: RoleToStream, result?: Response) {
     if (!result) return;
     const simulation = (io.stream as StreamConfig).simulation;
-    if (typeof simulation === 'string') {
+    if (typeof simulation === STRING) {
       const role = result[ROLE] || AI;
       const stream = roleToStream[role];
       if (result[TEXT] === simulation || result[HTML] === simulation) {

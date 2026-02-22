@@ -1,5 +1,4 @@
 import {DEFINE_FUNCTION_HANDLER, FUNCTION_TOOL_RESPONSE_STRUCTURE_ERROR} from '../../utils/errorMessages/errorMessages';
-import {DEEP_COPY, ERROR, FILE, IMAGE, ROLE, SRC, STRINGIFY, TEXT, TYPE, USER} from '../../utils/consts/messageConstants';
 import {AUTHENTICATION_ERROR_PREFIX, INVALID_REQUEST_ERROR_PREFIX, OBJECT} from '../utils/serviceConstants';
 import {CLAUDE_BUILD_HEADERS, CLAUDE_BUILD_KEY_VERIFICATION_DETAILS} from './utils/claudeUtils';
 import {ClaudeContent, ClaudeMessage, ClaudeRequestBody} from '../../types/claudeInternal';
@@ -13,6 +12,19 @@ import {Claude, ClaudeChat} from '../../types/claude';
 import {MessageFile} from '../../types/messageFile';
 import {APIKey} from '../../types/APIKey';
 import {DeepChat} from '../../deepChat';
+import {
+  DEEP_COPY,
+  STRINGIFY,
+  STRING,
+  ERROR,
+  IMAGE,
+  FILE,
+  ROLE,
+  TEXT,
+  TYPE,
+  USER,
+  SRC,
+} from '../../utils/consts/messageConstants';
 
 // https://docs.anthropic.com/en/api/messages
 export class ClaudeIO extends DirectServiceIO {
@@ -128,7 +140,7 @@ export class ClaudeIO extends DirectServiceIO {
     });
 
     // Add tool results
-    if (!responses.find(({response}) => typeof response !== 'string') && functions.length === responses.length) {
+    if (!responses.find(({response}) => typeof response !== STRING) && functions.length === responses.length) {
       const toolResultContent = responses.map((resp, index) => ({
         [TYPE]: 'tool_result' as const,
         tool_use_id: toolUseBlocks[index].id,

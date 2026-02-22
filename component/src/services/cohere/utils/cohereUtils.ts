@@ -2,6 +2,7 @@ import {APPLICATION_JSON, AUTHORIZATION_H, BEARER_PREFIX, CONTENT_TYPE_H_KEY, GE
 import {BUILD_KEY_VERIFICATION_DETAILS} from '../../utils/directServiceUtils';
 import {KeyVerificationDetails} from '../../../types/keyVerificationDetails';
 import {INVALID_KEY} from '../../../utils/errorMessages/errorMessages';
+import {STRING} from '../../../utils/consts/messageConstants';
 import {CohereChatResult} from '../../../types/cohereResult';
 
 export const COHERE_BUILD_HEADERS = (key: string) => {
@@ -19,7 +20,7 @@ const handleVerificationResult = (
   onFail: (message: string) => void
 ) => {
   const cohereResult = result as CohereChatResult;
-  if (typeof cohereResult.message === 'string') {
+  if (typeof cohereResult.message === STRING) {
     onFail(INVALID_KEY);
   } else {
     onSuccess(key);

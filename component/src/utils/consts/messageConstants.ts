@@ -64,6 +64,8 @@ export const ONE = '1';
 
 export const ROLE = 'role';
 
+export const STRING = 'string';
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const STRINGIFY = (object: any) => JSON.stringify(object);
 

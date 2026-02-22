@@ -1,4 +1,4 @@
-import {AUDIO, ERROR, FILES, IMAGE, SERVICE, SRC, TEXT} from '../consts/messageConstants';
+import {AUDIO, ERROR, FILES, IMAGE, SERVICE, SRC, STRING, TEXT} from '../consts/messageConstants';
 import {MessageContentI, MessageToElements} from '../../types/messagesInternal';
 import {Messages} from '../../views/chat/messages/messages';
 import {ServiceIO} from '../../services/serviceIO';
@@ -57,7 +57,7 @@ export class Demo {
       const result = await RequestUtils.basicResponseProcessing(messages, response, {io});
       if (!result) return io.completionsHandlers.onFinish();
       const messageDataArr = Array.isArray(result) ? result : [result];
-      const errorMessage = messageDataArr.find((message) => typeof message[ERROR] === 'string');
+      const errorMessage = messageDataArr.find((message) => typeof message[ERROR] === STRING);
       if (errorMessage) {
         messages.addNewErrorMessage(SERVICE, errorMessage[ERROR]);
         io.completionsHandlers.onFinish();

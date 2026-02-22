@@ -1,4 +1,3 @@
-import {AI, DEEP_COPY, ERROR, FILES, IMAGE, ROLE, SRC, TEXT, TYPE, USER} from '../../utils/consts/messageConstants';
 import {COMPLETED, FUNCTION_CALL, GET, IMAGE_URL, INPUT_AUDIO, OBJECT, POST} from '../utils/serviceConstants';
 import {OpenAIFileContent, OpenAIConverseBodyInternal} from '../../types/openAIInternal';
 import {KeyVerificationDetails} from '../../types/keyVerificationDetails';
@@ -35,6 +34,19 @@ import {
   INPUT_TEXT,
   RESPONSE,
 } from './openAIConsts';
+import {
+  DEEP_COPY,
+  STRING,
+  ERROR,
+  FILES,
+  IMAGE,
+  ROLE,
+  TEXT,
+  TYPE,
+  USER,
+  SRC,
+  AI,
+} from '../../utils/consts/messageConstants';
 
 export class OpenAIChatIO extends OpenAIBaseIO {
   override keyHelpUrl = OPEN_AI_KEY_HELP_URL;
@@ -186,9 +198,8 @@ export class OpenAIChatIO extends OpenAIBaseIO {
     if (result.status) {
       const completedOutputs = OpenAIChatIO.filterCompleted(result.output);
       if (completedOutputs.length > 0) {
-        const text = (completedOutputs as OpenAIMessage[]).find(
-          (output) => typeof output.content?.[0]?.[TEXT] === 'string'
-        )?.content?.[0]?.[TEXT];
+        const text = (completedOutputs as OpenAIMessage[]).find((output) => typeof output.content?.[0]?.[TEXT] === STRING)
+          ?.content?.[0]?.[TEXT];
         const functionResponse = await this.handleResponsesFunctionCalls(completedOutputs, prevBody, text);
         if (functionResponse) return functionResponse as ResponseI;
         const fileResponse = this.handleFileGenerationResponse(completedOutputs, text);
@@ -256,7 +267,7 @@ export class OpenAIChatIO extends OpenAIBaseIO {
       // https://community.openai.com/t/issue-with-new-responses-api-400-no-tool-call-found-for-function-call-output-with-call-id/1142327
       functionCalls.forEach((functionCall) => bodyCp.input.push(functionCall));
       // Then add the function call outputs
-      if (!responses.find(({response}) => typeof response !== 'string') && functions.length === responses.length) {
+      if (!responses.find(({response}) => typeof response !== STRING) && functions.length === responses.length) {
         responses.forEach((resp, index) => {
           const functionCall = functionCalls[index];
           bodyCp.input.push({type: FUNCTION_CALL_OUTPUT, call_id: functionCall.call_id, output: resp[RESPONSE]});

@@ -16,6 +16,7 @@ import {
   DEEP_COPY,
   STRINGIFY,
   IMAGES,
+  STRING,
   ERROR,
   FILES,
   IMAGE,
@@ -129,7 +130,7 @@ export class OllamaIO extends DirectServiceIO {
     if (processedResponse) return processedResponse;
 
     bodyCp.messages.push({tool_calls: tools.tool_calls, [ROLE]: ASSISTANT, content: ''});
-    if (!responses.find(({response}) => typeof response !== 'string') && functions.length === responses.length) {
+    if (!responses.find(({response}) => typeof response !== STRING) && functions.length === responses.length) {
       responses.forEach((resp, index) => {
         const toolCall = tools.tool_calls?.[index];
         bodyCp?.messages.push({

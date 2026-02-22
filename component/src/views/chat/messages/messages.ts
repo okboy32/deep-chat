@@ -35,6 +35,7 @@ import {History} from './history/history';
 import {
   ERROR_MESSAGE_TEXT_CLASS,
   SERVICE,
+  STRING,
   FILES,
   ERROR,
   FILE,
@@ -353,7 +354,7 @@ export class Messages extends MessagesBase {
       const messages = Messages.extractErrorMessages(message); // turning all into array for convenience
       for (let i = 0; i < messages.length; i += 1) {
         const messageStr = messages[i];
-        if (typeof messageStr === 'string') {
+        if (typeof messageStr === STRING) {
           if (this._displayServiceErrorMessages) return messageStr;
           if (this._permittedErrorPrefixes) {
             const result = Messages.checkPermittedErrorPrefixes(this._permittedErrorPrefixes, messageStr);

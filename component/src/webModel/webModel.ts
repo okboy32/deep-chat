@@ -1,4 +1,4 @@
-import {AI, DEEP_COPY, DOCS_BASE_URL, ERROR, ROLE, SERVICE, TEXT, USER} from '../utils/consts/messageConstants';
+import {AI, DEEP_COPY, DOCS_BASE_URL, ERROR, ROLE, SERVICE, STRING, TEXT, USER} from '../utils/consts/messageConstants';
 import {MessageStream} from '../views/chat/messages/stream/messageStream';
 import {AppConfig, ChatOptions} from '../types/webModel/webLLM/webLLM';
 import {IntroMessage, MessageContent} from '../types/messages';
@@ -293,7 +293,7 @@ export class WebModel extends BaseServiceIO {
         return;
       }
     const messageDataArr = Array.isArray(result) ? result : [result];
-    const errorMessage = messageDataArr.find((message) => typeof message[ERROR] === 'string');
+    const errorMessage = messageDataArr.find((message) => typeof message[ERROR] === STRING);
     if (errorMessage) {
       RequestUtils.displayError(messages, new Error(errorMessage[ERROR]));
       return;

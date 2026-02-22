@@ -1,7 +1,7 @@
 import {DEFINE_FUNCTION_HANDLER, FUNCTION_TOOL_RESPONSE_STRUCTURE_ERROR} from '../../utils/errorMessages/errorMessages';
 import {OpenWebUIConverseResult, OpenWebUIStreamResult, OpenWebUIToolCall} from '../../types/openWebUIResult';
 import {OPEN_WEB_UI_BUILD_HEADERS, OPEN_WEB_UI_BUILD_KEY_VERIFICATION_DETAILS} from './utils/openWebUIUtils';
-import {ASSISTANT, DEEP_COPY, ERROR, FILES, ROLE, TEXT} from '../../utils/consts/messageConstants';
+import {ASSISTANT, DEEP_COPY, ERROR, FILES, ROLE, STRING, TEXT} from '../../utils/consts/messageConstants';
 import {OpenWebUIConverseBodyInternal, OpenWebUIMessage} from '../../types/openWebUIInternal';
 import {DirectConnection} from '../../types/directConnection';
 import {MessageContentI} from '../../types/messagesInternal';
@@ -121,7 +121,7 @@ export class OpenWebUIIO extends DirectServiceIO {
     if (processedResponse) return processedResponse;
 
     bodyCp.messages.push({tool_calls: tools.tool_calls, [ROLE]: ASSISTANT, content: ''});
-    if (!responses.find(({response}) => typeof response !== 'string') && functions.length === responses.length) {
+    if (!responses.find(({response}) => typeof response !== STRING) && functions.length === responses.length) {
       responses.forEach((resp, index) => {
         const toolCall = tools.tool_calls?.[index];
         bodyCp?.messages.push({
