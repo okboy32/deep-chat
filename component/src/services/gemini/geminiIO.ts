@@ -1,4 +1,4 @@
-import {DEEP_COPY, ERROR, FILES, ROLE, SRC, STRINGIFY, TEXT, USER} from '../../utils/consts/messageConstants';
+import {DEEP_COPY, ERROR, FILES, ROLE, SRC, STRING, STRINGIFY, TEXT, USER} from '../../utils/consts/messageConstants';
 import {GEMINI_BUILD_HEADERS, GEMINI_BUILD_KEY_VERIFICATION_DETAILS} from './utils/geminiUtils';
 import {GeminiContent, GeminiRequestBody} from '../../types/geminiInternal';
 import {GeminiGenerateContentResult} from '../../types/geminiResult';
@@ -146,7 +146,7 @@ export class GeminiIO extends DirectServiceIO {
 
     bodyCp.contents.push(assistantContent);
 
-    if (!responses.find(({response}) => typeof response !== 'string') && functions.length === responses.length) {
+    if (!responses.find(({response}) => typeof response !== STRING) && functions.length === responses.length) {
       const functionResponseContent: GeminiContent = {
         parts: responses.map((resp, index) => ({
           functionResponse: {
