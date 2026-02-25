@@ -110,7 +110,7 @@ export class InputButton<T extends Styles = Styles> {
     const elements = ButtonInnerElements.createCustomElements(state, this.svg, customStyles);
     if (elements && elements.length > 0) {
       if (this.position === DROPUP_MENU) {
-        const iconClone = this.svg.cloneNode(true) as SVGGraphicsElement;
+        const iconClone = elements[0].cloneNode(true) as SVGGraphicsElement;
         // if original svg - add original id, if custom use the custom id
         iconClone.id = elements[0] === this.svg ? iconId : 'dropup-menu-item-icon-element-custom';
         elements[0] = iconClone;
