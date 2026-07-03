@@ -42,12 +42,12 @@
           console.log(response);
           return response;
         }}
-      />
+      ></deep-chat>
       <deep-chat
       style="border-radius: 10px"
       introMessage={{text: "Send a streamed chat message to an example server."}}
         connect={{url: '/api/custom/chat-stream', stream: true}}
-      />
+      ></deep-chat>
       <deep-chat
         style="border-radius: 10px"
         introMessage={{text: "Send files to an example server."}}
@@ -62,7 +62,7 @@
         validateInput={(/** @type {any} */ _, /** @type {string | any[]} */ files) => {
           return !!files && files.length > 0;
         }}
-      />
+      ></deep-chat>
     </div>
     <h1 class="server-title">Server for OpenAI</h1>
       <a href="https://openai.com/blog/openai-api" target="_blank" rel="noreferrer">
@@ -86,14 +86,14 @@
         connect={{url: '/api/openai/chat', additionalBodyProps: {model: 'gpt-5.4'}}}
         requestBodyLimits={{maxMessages: -1}}
         errorMessages={{displayServiceErrorMessages: true}}
-      />
+      ></deep-chat>
       <deep-chat
         style="border-radius: 10px"
         introMessage={{text: "Send a streamed chat message through an example server to OpenAI."}}
         connect={{url: '/api/openai/chat-stream', stream: true, additionalBodyProps: {model: 'gpt-5.4'}}}
         requestBodyLimits={{maxMessages: -1}}
         errorMessages={{displayServiceErrorMessages: true}}
-      />
+      ></deep-chat>
       <!-- If not using the camera, you can use an example image here:
         https://github.com/OvidijusParsiunas/deep-chat/blob/main/example-servers/ui/assets/example-image.png -->
       <deep-chat
@@ -104,7 +104,7 @@
         images={{files: {maxNumberOfFiles: 1, acceptedFormats: '.png'}}}
         textInput={{disabled: true, placeholder: {text: 'Send an image!'}}}
         errorMessages={{displayServiceErrorMessages: true}}
-      />
+      ></deep-chat>
     </div>
 
     <h1 class="server-title">Server for Hugging Face</h1>
@@ -127,7 +127,7 @@
         requestBodyLimits={{maxMessages: -1}}
         connect={{url: '/api/huggingface/conversation'}}
         errorMessages={{displayServiceErrorMessages: true}}
-      />
+      ></deep-chat>
       <!-- If not using the camera, you can use an example image here:
         https://github.com/OvidijusParsiunas/deep-chat/blob/main/example-servers/ui/assets/example-image.png -->
       <deep-chat
@@ -138,7 +138,7 @@
         images={{files: {maxNumberOfFiles: 1, acceptedFormats: '.png'}}}
         textInput={{disabled: true, placeholder: {text: 'Send an image!'}}}
         errorMessages={{displayServiceErrorMessages: true}}
-      />
+      ></deep-chat>
       <!-- If not using the microphone, you can send an example audio file here:
         https://github.com/OvidijusParsiunas/deep-chat/blob/main/example-servers/ui/assets/example-audio.m4a -->
       <deep-chat
@@ -149,7 +149,7 @@
         microphone={{files: {maxNumberOfFiles: 1}}}
         textInput={{disabled: true, placeholder: {text: 'Send an audio file!'}}}
         errorMessages={{displayServiceErrorMessages: true}}
-      />
+      ></deep-chat>
     </div>
 
     <h1 class="server-title">Server for Stability AI</h1>
@@ -170,7 +170,7 @@
         connect={{url: '/api/stabilityai/text-to-image'}}
         textInput={{placeholder: {text: 'Describe an image'}}}
         errorMessages={{displayServiceErrorMessages: true}}
-      />
+      ></deep-chat>
       <!-- If not using the camera, you can use an example image here:
           https://github.com/OvidijusParsiunas/deep-chat/blob/main/example-servers/ui/assets/example-image.png -->
       <deep-chat
@@ -184,7 +184,7 @@
         validateInput={(/** @type {string} */ text, /** @type {File[]} */ files) => {
           return !!text && text?.trim() !== '' && !!files && files.length > 0;
         }}
-      />
+      ></deep-chat>
       <!-- If not using the camera, you can use an example image here:
           https://github.com/OvidijusParsiunas/deep-chat/blob/main/example-servers/ui/assets/example-image.png -->
       <deep-chat
@@ -195,7 +195,7 @@
         images={{files: {maxNumberOfFiles: 1, acceptedFormats: '.png'}}}
         textInput={{disabled: true, placeholder: {text: 'Send an image'}}}
         errorMessages={{displayServiceErrorMessages: true}}
-      />
+      ></deep-chat>
     </div>
 
     <h1 class="server-title">Server for Cohere</h1>
@@ -216,21 +216,21 @@
         connect={{url: '/api/cohere/chat'}}
         requestBodyLimits={{maxMessages: -1}}
         errorMessages={{displayServiceErrorMessages: true}}
-      />
+      ></deep-chat>
       <deep-chat
         style="border-radius: 10px"
         introMessage={{text: 'Send start text through an example server to Cohere and receive its genereated completion. E.g. "Please explain to me how LLMs work"'}}
         connect={{url: '/api/cohere/generate'}}
         textInput={{placeholder: {text: 'Once upon a time...'}}}
         errorMessages={{displayServiceErrorMessages: true}}
-      />
+      ></deep-chat>
       <deep-chat
         style="border-radius: 10px"
         introMessage={{text: "Send text through an example server to Cohere and receive its summary."}}
         connect={{url: '/api/cohere/summarize'}}
         textInput={{placeholder: {text: 'Insert text to summarize'}}}
         errorMessages={{displayServiceErrorMessages: true}}
-      />
+      ></deep-chat>
     </div>
   {/if}
 </main>
