@@ -33,6 +33,7 @@
     "react-tooltip": "^5.26.3",
     "react-tsparticles": "^2.10.1",
     "sortablejs": "^1.15.2",
+    "speech-to-element": "^2.0.0",
     "tsparticles": "^2.10.1"
   },
   "devDependencies": {
