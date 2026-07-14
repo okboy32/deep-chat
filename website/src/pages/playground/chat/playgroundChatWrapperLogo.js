@@ -141,6 +141,13 @@ function Icon({connect}) {
     if (connect.qwen) {
       return <img src={qwenLogo} width="17" style={{paddingTop: '5.5px', marginRight: '6px'}} />;
     }
+    if (connect.requesty) {
+      return (
+        <span style={{paddingTop: '6.5px', marginRight: '8px', fontSize: '15px', lineHeight: 1, display: 'inline-block'}}>
+          🔀
+        </span>
+      );
+    }
     if (connect.stabilityAI) {
       return <img src={stabilityAILogo} width="19" style={{paddingTop: '4.8px', marginRight: '6px'}} />;
     }

@@ -299,6 +299,18 @@ const services = {
       />
     ),
   },
+  requesty: {
+    value: 'requesty',
+    text: 'Requesty',
+    icon: (
+      <span
+        className="playground-service-modal-service-icon"
+        style={{fontSize: '11px', marginLeft: '0px', marginRight: '4px'}}
+      >
+        🔀
+      </span>
+    ),
+  },
   stabilityAI: {
     value: 'stabilityAI',
     text: 'StabilityAI',
@@ -358,6 +370,7 @@ const SERVICE_TO_LINK = {
   openWebUI: 'https://openwebui.com/',
   perplexity: 'https://www.perplexity.ai/',
   qwen: 'https://www.alibabacloud.com/product/dashscope',
+  requesty: 'https://requesty.ai/',
   stabilityAI: 'https://stability.ai/',
   together: 'https://www.together.ai/',
   x: 'https://x.ai/',

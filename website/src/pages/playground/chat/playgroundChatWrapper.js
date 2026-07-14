@@ -218,6 +218,7 @@ const SERVICE_TO_NAME = {
   openRouter: 'OpenRouter',
   perplexity: 'Perplexity',
   qwen: 'Qwen',
+  requesty: 'Requesty',
   stabilityAI: {
     textToImage: 'StabilityAI: Text To Image',
     imageToImage: 'StabilityAI: Image To Image',

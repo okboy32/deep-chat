@@ -71,7 +71,8 @@ export default function ServiceModal({chatComponent, collapseStates, setEditingC
       service === 'miniMax' ||
       service === 'perplexity' ||
       service === 'ollama' ||
-      service === 'liteLLM'
+      service === 'liteLLM' ||
+      service === 'requesty'
     );
   };
 
@@ -754,6 +755,13 @@ const SERVICE_MODAL_FORM_CONFIG = {
     allowImages: ['true', 'false'],
     allowCamera: ['true', 'false'],
   },
+  requesty: {
+    model: 'string',
+    system_prompt: 'string',
+    max_tokens: 'number',
+    allowImages: ['true', 'false'],
+    allowCamera: ['true', 'false'],
+  },
   stabilityAI: {
     textToImage: {
       height: 'number',
@@ -867,6 +875,7 @@ const SERVICE_TYPE_TO_API_KEY_LINK = {
   openRouter: 'https://openrouter.ai/keys',
   perplexity: 'https://www.perplexity.ai/settings/api',
   qwen: 'https://www.alibabacloud.com/product/dashscope',
+  requesty: 'https://app.requesty.ai/api-keys',
   stabilityAI: 'https://platform.stability.ai/docs/getting-started/authentication',
   together: 'https://api.together.xyz/settings/api-keys',
   x: 'https://x.ai/',
@@ -1219,6 +1228,13 @@ const OPTIONAL_PARAM_TO_LINK = {
     presence_penalty: 'https://www.alibabacloud.com/help/en/model-studio/developer-reference/qwen-api-details',
     stop: 'https://www.alibabacloud.com/help/en/model-studio/developer-reference/qwen-api-details',
     system_prompt: 'https://www.alibabacloud.com/help/en/model-studio/developer-reference/qwen-api-details',
+    allowImages: 'https://deepchat.dev/docs/files#images',
+    allowCamera: 'https://deepchat.dev/docs/files#camera',
+  },
+  requesty: {
+    model: 'https://docs.requesty.ai/',
+    system_prompt: 'https://docs.requesty.ai/',
+    max_tokens: 'https://docs.requesty.ai/',
     allowImages: 'https://deepchat.dev/docs/files#images',
     allowCamera: 'https://deepchat.dev/docs/files#camera',
   },
