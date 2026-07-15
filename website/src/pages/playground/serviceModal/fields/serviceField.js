@@ -6,6 +6,7 @@ import openRouterLogo from '/img/openRouterLogo.png';
 import perplexityLogo from '/img/perplexityLogo.png';
 import openWebUILogo from '/img/openWebUILogo.png';
 import togetherLogo from '/img/togetherLogo.webp';
+import requestyLogo from '/img/requestyLogo.ico';
 import bigModelLogo from '/img/bigModelLogo.png';
 import deepSeekLogo from '/img/deepSeekLogo.png';
 import minimaxLogo from '/img/minimaxLogo.png';
@@ -303,12 +304,11 @@ const services = {
     value: 'requesty',
     text: 'Requesty',
     icon: (
-      <span
+      <img
+        src={requestyLogo}
         className="playground-service-modal-service-icon"
-        style={{fontSize: '11px', marginLeft: '0px', marginRight: '4px'}}
-      >
-        🔀
-      </span>
+        style={{marginLeft: '2px', transform: 'scale(1.4)'}}
+      />
     ),
   },
   stabilityAI: {
