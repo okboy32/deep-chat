@@ -9,6 +9,7 @@ import togetherLogo from '/img/togetherLogo.webp';
 import requestyLogo from '/img/requestyLogo.ico';
 import bigModelLogo from '/img/bigModelLogo.png';
 import deepSeekLogo from '/img/deepSeekLogo.png';
+import liteLLMLogo from '/img/liteLLMlogo.avif';
 import minimaxLogo from '/img/minimaxLogo.png';
 import mistralLogo from '/img/mistralLogo.png';
 import geminiLogo from '/img/geminiLogo.webp';
@@ -25,7 +26,6 @@ import WebModelLogo from '/img/chip.svg';
 import xLogo from '/img/xLogo.webp';
 import Flash from '/img/flash.svg';
 import './serviceField.css';
-import React from 'react';
 
 export default function Service({activeService, changeService, modalRef}) {
   return (
@@ -204,12 +204,11 @@ const services = {
     value: 'liteLLM',
     text: 'LiteLLM',
     icon: (
-      <span
-        className="playground-service-modal-service-icon"
-        style={{fontSize: '11px', marginTop: '-2px', marginLeft: '0px', marginRight: '4px'}}
-      >
-        🚅
-      </span>
+      <img
+        src={liteLLMLogo}
+        className="playground-service-modal-service-icon adaptive-logo-filter"
+        style={{marginTop: '-4px', transform: 'scale(1.3)'}}
+      />
     ),
   },
   miniMax: {

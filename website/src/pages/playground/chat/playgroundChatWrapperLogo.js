@@ -7,6 +7,7 @@ import togetherLogo from '/img/togetherLogo.webp';
 import bigModelLogo from '/img/bigModelLogo.png';
 import deepSeekLogo from '/img/deepSeekLogo.png';
 import requestyLogo from '/img/requestyLogo.ico';
+import liteLLMLogo from '/img/liteLLMlogo.avif';
 import minimaxLogo from '/img/minimaxLogo.png';
 import mistralLogo from '/img/mistralLogo.png';
 import geminiLogo from '/img/geminiLogo.webp';
@@ -96,11 +97,7 @@ function Icon({connect}) {
       );
     }
     if (connect.liteLLM) {
-      return (
-        <span style={{paddingTop: '5.5px', marginRight: '8px', fontSize: '15px', lineHeight: 1, display: 'inline-block'}}>
-          🚅
-        </span>
-      );
+      return <img src={liteLLMLogo} width="18" style={{paddingTop: '3px', marginRight: '8px'}} />;
     }
     if (connect.miniMax) {
       return <img src={minimaxLogo} width="17" style={{paddingTop: '5.5px', marginRight: '6px'}} />;
