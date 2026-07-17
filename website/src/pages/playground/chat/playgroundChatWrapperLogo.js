@@ -3,6 +3,7 @@ import stabilityAILogo from '/img/stabilityAILogo.png';
 import assemblyAILogo from '/img/assemblyAILogo.png';
 import openRouterLogo from '/img/openRouterLogo.png';
 import perplexityLogo from '/img/perplexityLogo.png';
+import openWebUILogo from '/img/openWebUILogo.png';
 import togetherLogo from '/img/togetherLogo.webp';
 import bigModelLogo from '/img/bigModelLogo.png';
 import deepSeekLogo from '/img/deepSeekLogo.png';
@@ -121,6 +122,16 @@ function Icon({connect}) {
           src={openRouterLogo}
           width="17"
           style={{paddingTop: '5.5px', marginRight: '6px'}}
+          className="adaptive-logo-filter"
+        />
+      );
+    }
+    if (connect.openWebUI) {
+      return (
+        <img
+          src={openWebUILogo}
+          width="24"
+          style={{paddingTop: '3px', marginRight: '2px'}}
           className="adaptive-logo-filter"
         />
       );

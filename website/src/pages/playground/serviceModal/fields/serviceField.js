@@ -273,7 +273,7 @@ const services = {
       <img
         src={openWebUILogo}
         className="playground-service-modal-service-icon"
-        style={{marginTop: '-1px', transform: 'scale(1.3)'}}
+        style={{marginTop: '1px', transform: 'scale(2)'}}
       />
     ),
   },
