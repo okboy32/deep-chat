@@ -6,8 +6,10 @@ import openRouterLogo from '/img/openRouterLogo.png';
 import perplexityLogo from '/img/perplexityLogo.png';
 import openWebUILogo from '/img/openWebUILogo.png';
 import togetherLogo from '/img/togetherLogo.webp';
+import requestyLogo from '/img/requestyLogo.ico';
 import bigModelLogo from '/img/bigModelLogo.png';
 import deepSeekLogo from '/img/deepSeekLogo.png';
+import liteLLMLogo from '/img/liteLLMlogo.avif';
 import minimaxLogo from '/img/minimaxLogo.png';
 import mistralLogo from '/img/mistralLogo.png';
 import geminiLogo from '/img/geminiLogo.webp';
@@ -24,7 +26,6 @@ import WebModelLogo from '/img/chip.svg';
 import xLogo from '/img/xLogo.webp';
 import Flash from '/img/flash.svg';
 import './serviceField.css';
-import React from 'react';
 
 export default function Service({activeService, changeService, modalRef}) {
   return (
@@ -199,6 +200,17 @@ const services = {
       />
     ),
   },
+  liteLLM: {
+    value: 'liteLLM',
+    text: 'LiteLLM',
+    icon: (
+      <img
+        src={liteLLMLogo}
+        className="playground-service-modal-service-icon adaptive-logo-filter"
+        style={{marginTop: '-4px', transform: 'scale(1.3)'}}
+      />
+    ),
+  },
   miniMax: {
     value: 'miniMax',
     text: 'MiniMax',
@@ -261,7 +273,7 @@ const services = {
       <img
         src={openWebUILogo}
         className="playground-service-modal-service-icon"
-        style={{marginTop: '-1px', transform: 'scale(1.3)'}}
+        style={{marginTop: '1px', transform: 'scale(2)'}}
       />
     ),
   },
@@ -284,6 +296,17 @@ const services = {
         src={qwenLogo}
         className="playground-service-modal-service-icon"
         style={{marginTop: '-1px', transform: 'scale(1.3)'}}
+      />
+    ),
+  },
+  requesty: {
+    value: 'requesty',
+    text: 'Requesty',
+    icon: (
+      <img
+        src={requestyLogo}
+        className="playground-service-modal-service-icon"
+        style={{marginLeft: '2px', transform: 'scale(1.4)'}}
       />
     ),
   },
@@ -337,6 +360,7 @@ const SERVICE_TO_LINK = {
   groq: 'https://groq.com/',
   huggingFace: 'https://huggingface.co/docs/api-inference/index',
   kimi: 'https://platform.moonshot.ai/',
+  liteLLM: 'https://www.litellm.ai/',
   miniMax: 'https://www.minimax.io/',
   mistral: 'https://mistral.ai/',
   ollama: 'https://ollama.com/',
@@ -345,6 +369,7 @@ const SERVICE_TO_LINK = {
   openWebUI: 'https://openwebui.com/',
   perplexity: 'https://www.perplexity.ai/',
   qwen: 'https://www.alibabacloud.com/product/dashscope',
+  requesty: 'https://requesty.ai/',
   stabilityAI: 'https://stability.ai/',
   together: 'https://www.together.ai/',
   x: 'https://x.ai/',

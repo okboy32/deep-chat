@@ -4,6 +4,7 @@ import {AssemblyAI} from './assemblyAI';
 import {OpenRouter} from './openRouter';
 import {Perplexity} from './perplexity';
 import {OpenWebUI} from './openWebUI';
+import {Requesty} from './requesty';
 import {DeepSeek} from './deepSeek';
 import {Together} from './together';
 import {BigModel} from './bigModel';
@@ -47,4 +48,5 @@ export interface DirectConnection {
   openWebUI?: OpenWebUI & APIKey;
   dify?: Dify & APIKey;
   liteLLM?: LiteLLM & APIKey;
+  requesty?: Requesty & APIKey;
 }

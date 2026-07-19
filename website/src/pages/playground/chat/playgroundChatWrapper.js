@@ -202,6 +202,7 @@ const SERVICE_TO_NAME = {
     imageClassification: 'Hugging Face: Image Classification',
   },
   kimi: 'Kimi',
+  liteLLM: 'LiteLLM',
   miniMax: 'MiniMax',
   mistral: 'Mistral',
   ollama: 'Ollama',
@@ -217,6 +218,7 @@ const SERVICE_TO_NAME = {
   openRouter: 'OpenRouter',
   perplexity: 'Perplexity',
   qwen: 'Qwen',
+  requesty: 'Requesty',
   stabilityAI: {
     textToImage: 'StabilityAI: Text To Image',
     imageToImage: 'StabilityAI: Image To Image',

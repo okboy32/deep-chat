@@ -3,9 +3,12 @@ import stabilityAILogo from '/img/stabilityAILogo.png';
 import assemblyAILogo from '/img/assemblyAILogo.png';
 import openRouterLogo from '/img/openRouterLogo.png';
 import perplexityLogo from '/img/perplexityLogo.png';
+import openWebUILogo from '/img/openWebUILogo.png';
 import togetherLogo from '/img/togetherLogo.webp';
 import bigModelLogo from '/img/bigModelLogo.png';
 import deepSeekLogo from '/img/deepSeekLogo.png';
+import requestyLogo from '/img/requestyLogo.ico';
+import liteLLMLogo from '/img/liteLLMlogo.avif';
 import minimaxLogo from '/img/minimaxLogo.png';
 import mistralLogo from '/img/mistralLogo.png';
 import geminiLogo from '/img/geminiLogo.webp';
@@ -22,7 +25,6 @@ import WebModelLogo from '/img/chip.svg';
 import './playgroundChatWrapper.css';
 import xLogo from '/img/xLogo.webp';
 import Flash from '/img/flash.svg';
-import React from 'react';
 
 function Icon({connect}) {
   if (connect) {
@@ -95,6 +97,9 @@ function Icon({connect}) {
         />
       );
     }
+    if (connect.liteLLM) {
+      return <img src={liteLLMLogo} width="18" style={{paddingTop: '3px', marginRight: '8px'}} />;
+    }
     if (connect.miniMax) {
       return <img src={minimaxLogo} width="17" style={{paddingTop: '5.5px', marginRight: '6px'}} />;
     }
@@ -121,6 +126,16 @@ function Icon({connect}) {
         />
       );
     }
+    if (connect.openWebUI) {
+      return (
+        <img
+          src={openWebUILogo}
+          width="24"
+          style={{paddingTop: '3px', marginRight: '2px'}}
+          className="adaptive-logo-filter"
+        />
+      );
+    }
     if (connect.perplexity) {
       return (
         <img
@@ -133,6 +148,9 @@ function Icon({connect}) {
     }
     if (connect.qwen) {
       return <img src={qwenLogo} width="17" style={{paddingTop: '5.5px', marginRight: '6px'}} />;
+    }
+    if (connect.requesty) {
+      return <img src={requestyLogo} width="19" style={{paddingTop: '5.5px', marginRight: '6px'}} />;
     }
     if (connect.stabilityAI) {
       return <img src={stabilityAILogo} width="19" style={{paddingTop: '4.8px', marginRight: '6px'}} />;
