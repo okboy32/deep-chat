@@ -9,7 +9,7 @@ import togetherLogo from '/img/togetherLogo.webp';
 import requestyLogo from '/img/requestyLogo.ico';
 import bigModelLogo from '/img/bigModelLogo.png';
 import deepSeekLogo from '/img/deepSeekLogo.png';
-import liteLLMLogo from '/img/liteLLMlogo.avif';
+import liteLLMLogo from '/img/liteLLMLogo.avif';
 import minimaxLogo from '/img/minimaxLogo.png';
 import mistralLogo from '/img/mistralLogo.png';
 import geminiLogo from '/img/geminiLogo.webp';
