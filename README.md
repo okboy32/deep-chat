@@ -26,7 +26,18 @@
 
 ### :tada: Latest Updates
 
-Deep Chat version `2.4.0` brings a ton of new features into the Deep Chat ecosystem:
+`2.4.3` update:
+
+- [Requesty](https://deepchat.dev/docs/directConnection/Requesty), [liteLLM](https://deepchat.dev/docs/directConnection/LiteLLM) and [Dify](https://deepchat.dev/docs/directConnection/Dify) are now available in [`directConnection`](https://deepchat.dev/docs/directConnection)
+- Better support for [`webModel`](https://deepchat.dev/docs/webModel#webModel) across modern browsers
+- Multiple bug fixes
+- See [release notes](https://github.com/OvidijusParsiunas/deep-chat/releases/tag/2.4.3) for more!
+
+<p align="center">
+    <img width="960" src="https://github.com/user-attachments/assets/0f605209-bc3a-4f07-86d5-5cbd262b000d" alt="version 2.4.0">
+</p>
+
+`2.4.0` update:
 
 - New [`scrollButton`](https://deepchat.dev/docs/messages/#scrollButton) and [`hiddenMessages`](https://deepchat.dev/docs/messages/#hiddenMessages) components used to enhance UX in long conversations!
 - [`upwardsMode`](https://deepchat.dev/docs/modes#upwardsMode) can be used to populate messages upwards.
