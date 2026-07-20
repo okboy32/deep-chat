@@ -26,12 +26,12 @@
 
 ### :tada: Latest Updates
 
-`2.4.3` update:
+`2.5.0` update:
 
 - [Requesty](https://deepchat.dev/docs/directConnection/Requesty), [liteLLM](https://deepchat.dev/docs/directConnection/LiteLLM) and [Dify](https://deepchat.dev/docs/directConnection/Dify) are now available in [`directConnection`](https://deepchat.dev/docs/directConnection)
 - Better support for [`webModel`](https://deepchat.dev/docs/webModel#webModel) across modern browsers
 - Multiple bug fixes
-- See [release notes](https://github.com/OvidijusParsiunas/deep-chat/releases/tag/2.4.3) for more!
+- See [release notes](https://github.com/OvidijusParsiunas/deep-chat/releases/tag/2.5.0) for more!
 
 <p align="center">
     <img width="960" src="https://github.com/user-attachments/assets/0f605209-bc3a-4f07-86d5-5cbd262b000d" alt="version 2.4.0">
